@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+info:
+  artifactId: "${project.name}"
+  version: "${project.version}"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+#if ($with-spring-jpa == true)
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/$project
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+#end

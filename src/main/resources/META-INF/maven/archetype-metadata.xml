@@ -3,7 +3,7 @@
         http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
         xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        name="archetype-java-spring-boot">
+        name="custom-maven-archetype-spring-boot">
 
     <requiredProperties>
         <!-- Project properties -->
@@ -24,6 +24,13 @@
         <requiredProperty key="with-spring-web">
             <defaultValue>true</defaultValue>
         </requiredProperty>
+        <requiredProperty key="with-spring-jpa">
+            <defaultValue>false</defaultValue>
+        </requiredProperty>
+        <!-- Lombok -->
+        <requiredProperty key="with-lombok">
+            <defaultValue>false</defaultValue>
+        </requiredProperty>
     </requiredProperties>
 
     <fileSets>
@@ -33,10 +40,26 @@
                 <include>**/*.java</include>
             </includes>
         </fileSet>
+        <fileSet filtered="true">
+            <directory>src/main/resources</directory>
+            <includes>
+                <include>*.yml</include>
+                <include>*.txt</include>
+                <include>*.properties</include>
+            </includes>
+        </fileSet>
         <fileSet filtered="true" packaged="true">
             <directory>src/test/java</directory>
             <includes>
                 <include>**/*.java</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true">
+            <directory>src/test/resources</directory>
+            <includes>
+                <include>*.yml</include>
+                <include>*.txt</include>
+                <include>*.properties</include>
             </includes>
         </fileSet>
     </fileSets>
